@@ -3,32 +3,31 @@
 
 int main(void)
 {
-    int i;
+    int i, cnt_big, cnt_small;
 
     char userinput[256];
 
     char big[256];
     char small[256];
 
-
     printf("Input String: ");
     scanf("%[^\n]", &userinput);
 
-    for (i = 0; userinput[i] != '\0'; i++) {
-
-        if (userinput[i] == ' ') {
-            continue;
+    for (i = 0; i <= strlen(userinput); i++)
+    {
+        if (isupper(userinput[i]))
+        {
+            big[cnt_big] = userinput[i];
+            big[cnt_big + 1] = '\0';
+            cnt_big++;
         }
-
-        if (userinput[i] >= 'A' && userinput[i] <= 'Z') {
-            strcat(big, userinput[i]);
-        }
-
-        if (userinput[i] >= 'a' && userinput[i] <= 'z') {
-            strcat(small, userinput[i]);
+        else
+        {
+            small[cnt_small] = userinput[i];
+            small[cnt_small + 1] = '\0';
+            cnt_small++;
         }
     }
-
     printf("Big Character: %s\n", big);
     printf("Small Character: %s\n", small);
 
@@ -37,5 +36,4 @@ int main(void)
     printf("The number of Small Character: %d\n", strlen(small));
 
     return 0;
-
 }
